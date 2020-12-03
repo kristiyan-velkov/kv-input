@@ -1,0 +1,2 @@
+# christiyan-task
+Angular, TypeScrip 
