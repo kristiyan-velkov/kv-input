@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+    christiyan-task:
+        container_name: christiyan-progress-task
+        image: christiyan-task/07.12.2020
+        build:
+            context: .
+            dockerfile: Dockerfile-christiyan-progress-task
+        volumes:
+          - ./dist/christiyan-progress-task:/usr/share/nginx/html
+        ports:
+            - "8080:80"
+        command: [nginx-debug, '-g', 'daemon off;']
+        networks:
+          - christiyan-task-network
+
+networks:
+  christiyan-task-network:
+    driver: "bridge"
