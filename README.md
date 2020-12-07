@@ -19,6 +19,9 @@
 
 ## Examples
 
+
+<img src="./src/assets/images/kv-input-demo.gif" alt="KV INPUT">
+
 ## How to use KV Input
 <strong>KV input is extremely easy to use.</strong>
 

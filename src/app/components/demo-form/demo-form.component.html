@@ -1,10 +1,11 @@
 <div class="demo-page">
     <div class="container">
         <section class="demo-page-kvinput-info">
-            <img src="../../../assets/images/kvinput-logo.png" alt="KV Input">
-            <h1>Example KV input support form control</h1>
+            <app-kv-input [isDisabled]="false" [showInputClearButton]="true" [maxDropDownSuggestions]='10'
+            [placeholder]="'e.g. football'" [data]="data" formControlName="kvInput">
+        </app-kv-input>
         </section>
-        <section class="demo-page_form">
+        <!-- <section class="demo-page_form">
             <form [formGroup]="demoForm" class="demo-form_wrapper-form">
                 <div class="demo-page_form-wrapper">
                     <app-kv-input [isDisabled]="false" [showInputClearButton]="true" [maxDropDownSuggestions]='10'
@@ -18,6 +19,6 @@
         </section>
         <section class="demo-page_form-result">
             <div *ngIf="formStatus">Form result for kvInput: {{formStatus}}</div>
-        </section>
+        </section> -->
     </div>
 </div>
