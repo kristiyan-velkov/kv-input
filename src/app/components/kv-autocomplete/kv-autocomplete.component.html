@@ -1,0 +1,27 @@
+<div class="kv-autocomplete">
+    <input 
+        type="text"
+        class="kv-autocomplete-input"
+        placeholder="{{placeholder ? placeholder : 'Type ...'}}"
+        [value]="kvInputValue"
+        [disabled]="kvInputDisabledStatus"
+        [readonly]="kvInputReadOnlyStatus"
+        (focus)="openAutocompleteList()"
+        (blur)="closeAutocompleteList($event.target.value)"
+        (keyup.ArrowUp)="handleInputArrowUpEvent($event)"
+        (keyup.ArrowDown)="handleInputArrowDownEvent($event)"
+        (keyup.enter)="handleEnterEvent($event.target.value)"
+        (keyup.escape)="closeAutocompleteList($event.target.value)"
+    >
+    
+    <app-list-of-values
+    #kvDropDownList
+    *ngIf="showAutoCompleteList"
+    [autoCompleteData]="autocompleteData"
+    [showClearButton]="showClearButton"
+    (clearButton)="clearInputValue()"
+    (selectedItem)="updateInputValueAndRegister($event)">
+    </app-list-of-values>
+    
+</div>
+<!-- *ngIf="showAutoCompleteList" -->

@@ -1,0 +1,18 @@
+:host {
+    .kv-autocomplete {
+        margin: 10px 5px;
+
+        &-input {
+            width: 200px;
+            border: 1px solid #ccc;
+            outline: none;
+            padding: 10px;
+
+            &:focus {
+                -webkit-box-shadow: 0px 1px 3px 0px #9E9E9E;
+                -moz-box-shadow: 0px 1px 3px 0px #9E9E9E;
+                box-shadow: 0px 1px 3px 0px #9E9E9E;
+            }
+        }
+    }
+}
