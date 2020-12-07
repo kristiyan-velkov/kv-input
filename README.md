@@ -12,7 +12,6 @@
 - [How to use KV Input](#how-to-use-kv-input)
 - [Purpose and usage](#purpose-and-usage)
 - [Documentation](#documentation)
-- [Purpose and usage](#status)
 - [Creator](#creator)
 - [Further help](#further-help)
 - [Copyright and license](#copyright-and-license)
