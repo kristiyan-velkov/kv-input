@@ -8,7 +8,7 @@
 
 ## Table of contents
 
-- [Examples](#quick-start)
+- [Example](#example)
 - [How to use KV Input](#how-to-use-kv-input)
 - [Purpose and usage](#purpose-and-usage)
 - [Documentation](#documentation)
@@ -17,7 +17,7 @@
 - [Further help](#further-help)
 - [Copyright and license](#copyright-and-license)
 
-## Examples
+## Example
 
 
 <img src="./src/assets/images/kv-input-demo.gif" alt="KV INPUT">
