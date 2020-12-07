@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListOfValuesComponent } from './list-of-values.component';
+import { KvInputComponent } from './kv-input.component';
 
-describe('ListOfValuesComponent', () => {
-  let component: ListOfValuesComponent;
-  let fixture: ComponentFixture<ListOfValuesComponent>;
+describe('KvInputComponent', () => {
+  let component: KvInputComponent;
+  let fixture: ComponentFixture<KvInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListOfValuesComponent ]
+      declarations: [ KvInputComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListOfValuesComponent);
+    fixture = TestBed.createComponent(KvInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

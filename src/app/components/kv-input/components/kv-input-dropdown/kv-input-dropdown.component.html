@@ -1,0 +1,17 @@
+<div class="kv-input-dropdown">
+    <button id="btn-clear-value" type="reset" class="kv-input-dropdown_clear-input-btn" *ngIf="showClearButton" (click)="clearButtonWasClicked.emit(true)">x</button>
+    <ul 
+        #kvInputDropDownList
+        appHighlightMatchedItems 
+        [searchedWord]="searchText" 
+        [itemClassOnMatched]="'matched'"
+        [@listAnimation]="dropDownData.length"
+        class="kv-input-dropdown_list"
+    >
+        <li class="kv-input-dropdown_list-row" *ngFor="let item of dropDownData"
+            (click)="handleClickOnSelectedItem(item.value)">
+            <span class="kv-input-dropdown_list-row_index">{{item.index}} -</span>
+            <span id="value" class="kv-input-dropdown_list-row_value">{{item?.value}}</span>
+        </li>
+    </ul>
+</div>

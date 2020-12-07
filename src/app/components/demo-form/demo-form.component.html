@@ -1,36 +1,23 @@
-<form [formGroup]="demoForm">
-    <div class="form_wrapper">
-        <div>
-            <input type="text" name="test" formControlName="testInput">
-        </div>
-        <div>
-            <input type="text" name="test" formControlName="testInput2">
-        </div>
-        <app-kv-autocomplete [placeholder]="'e.g. football'" [data]="data" formControlName="kvInput"></app-kv-autocomplete>
-        <div>
-            <button type="button" (click)="onSubmitForm()">Submit Form</button>
-        </div>
+<div class="demo-page">
+    <div class="container">
+        <section class="demo-page-kvinput-info">
+            <img src="../../../assets/images/kvinput-logo.png" alt="KV Input">
+            <h1>Example KV input support form control</h1>
+        </section>
+        <section class="demo-page_form">
+            <form [formGroup]="demoForm" class="demo-form_wrapper-form">
+                <div class="demo-page_form-wrapper">
+                    <app-kv-input [isDisabled]="false" [showInputClearButton]="true" [maxDropDownSuggestions]='10'
+                        [placeholder]="'e.g. football'" [data]="data" formControlName="kvInput">
+                    </app-kv-input>
+                    <div class="demo-page_form-wrapper">
+                        <button class="demo-page_form-wrapper_btn-submit" type="button" (click)="onSubmitForm()">Submit Form</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section class="demo-page_form-result">
+            <div *ngIf="formStatus">Form result for kvInput: {{formStatus}}</div>
+        </section>
     </div>
-</form>
-
-<!-- <div>
-    <app-kv-autocomplete [placeholder]="'e.g. football'" [data]="data" (getInputValue)="emitInputValue($event)"></app-kv-autocomplete>
 </div>
-
-<div>
-    <app-kv-autocomplete [placeholder]="'e.g. football'" [data]="data" (getInputValue)="emitInputValue($event)"></app-kv-autocomplete>
-</div>
-<div>
-    <app-kv-autocomplete 
-    [placeholder]="'e.g. box'" 
-    [data]="data"
-    [maxDropDownResults]="2"
-    [showClearButton]="false"
-    [kvInputReadOnlyStatus]="true"
-    [kvInputDisabledStatus]="true"
-    (getInputValue)="emitInputValue($event)">
-</app-kv-autocomplete>
-</div>
-<div>
-    <app-kv-autocomplete [placeholder]="'e.g. football'" [data]="fakeData" (getInputValue)="emitInputValue($event)"></app-kv-autocomplete>
-</div> -->

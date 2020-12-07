@@ -1,39 +1,36 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IkvAutocompleteListItem } from '../components/kv-autocomplete/models/kv-autocomplete.interface';
-
+import { IKvInputDropdownItem } from './../components/kv-input/models/kv-input-dropdown';
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DataListService {
 
-  private defaultListValues: IkvAutocompleteListItem[] = [
-    { index: 10, value: 'fitness' },
-    { index: 9, value: 'box' },
-    { index: 8, value: 'golf' },
-    { index: 7, value: 'baseball' },
-    { index: 6, value: 'chess' },
-    { index: 5, value: 'volleyball' },
-    { index: 4, value: 'basketball' },
-    { index: 3, value: 'tennis' },
-    { index: 2, value: 'football', },
-    { index: 1, value: 'ski' },
-  ];
+    private defaultDropDownValues: IKvInputDropdownItem[] = [
+        { index: 10, value: 'fitness' },
+        { index: 9, value: 'box' },
+        { index: 8, value: 'golf' },
+        { index: 7, value: 'baseball' },
+        { index: 6, value: 'chess' },
+        { index: 5, value: 'volleyball' },
+        { index: 4, value: 'basketball' },
+        { index: 3, value: 'tennis' },
+        { index: 2, value: 'football', },
+        { index: 1, value: 'ski' },
+    ];
 
-  constructor(private http: HttpClient) { }
+    constructor() { }
 
-  public getDefaultListValues(): Observable<IkvAutocompleteListItem[]> {
-    return of(this.defaultListValues);
-  }
+    public getDefaultDropDownData(): Observable<IKvInputDropdownItem[]> {
+        return of(this.defaultDropDownValues);
+    }
 
-  public addAutoCompleteListItem(listItem: string): void {
-    const generatedListItem: IkvAutocompleteListItem = {
-      index: this.defaultListValues.length + 1,
-      value: listItem
-    };
+    public addDropDownListItem(listItem: string): void {
+        const generatedDropDownItem: IKvInputDropdownItem = {
+            index: this.defaultDropDownValues.length + 1,
+            value: listItem
+        };
 
-    this.defaultListValues.unshift(generatedListItem);
-    this.getDefaultListValues();
-  }
+        this.defaultDropDownValues.unshift(generatedDropDownItem);
+    }
 }

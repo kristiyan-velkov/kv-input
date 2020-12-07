@@ -1,0 +1,25 @@
+<div class="kv-input">
+    <input 
+        type="text"
+        placeholder="{{placeholder ? placeholder : 'Type ...'}}"
+        [(ngModel)]="kvInputValue"
+        [value]="kvInputValue"
+        [disabled]="isDisabled"
+        [readonly]="isReadOnly"
+        (focus)="openKvInputDropDown()"
+        (blur)="closeKvInputDropDown($event.target.value)"
+        (keyup.ArrowUp)="handleInputArrowUpEvent($event)"
+        (keyup.ArrowDown)="handleInputArrowDownEvent($event)"
+        (keyup.enter)="handleEnterEvent($event.target.value)"
+        (keyup.escape)="closeKvInputDropDown($event.target.value)"
+    >
+    <app-kv-input-dropdown
+        #kvInputDropDown
+        *ngIf="showKvInputDropDown"
+        [dropDownData]="dropDownData"
+        [showClearButton]="showInputClearButton"
+        (clearButtonWasClicked)="clearInputValue()"
+        [searchText]="kvInputValue"
+        (selectedDropDownItem)="updateInputValueAndRegister($event)">
+    </app-kv-input-dropdown>
+</div>

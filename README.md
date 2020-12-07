@@ -1,3 +1,23 @@
+<div align="center">
+  <img src="./src/assets/images/kvinput-logo.png" alt="KV INPUT">
+</div>
+<h3 align="center">KV INPUT</h3>
+</br>
+<h5></h5>
+<p align="center">VK INPUT is а Angular 10 component that supports form control and lets you choose a single predefined value from a dropdown list or input a custom value.</p>
+
+## Table of contents
+
+- [Quick start](#quick-start)
+- [Status](#status)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [Community](#community)
+- [Versioning](#versioning)
+- [Creators](#creator)
+- [Further help](#thank)
+- [Copyright and license](#copyright-and-license)
+
 # Christiyan Progress - Task
 
  - Angular - 10.2.0;
@@ -38,3 +58,6 @@ Christiyan Velkov
 ## Further help
 
 Email: christiyan.velkov@gmail.com
+
+## Copyright and license
+Copyright 

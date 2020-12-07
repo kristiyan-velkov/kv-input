@@ -1,8 +1,10 @@
 :host {
-    .kv-autocomplete {
+    .kv-input {
         margin: 10px 5px;
+        max-width: 220px;
+        text-align: left;
 
-        &-input {
+        input {
             width: 200px;
             border: 1px solid #ccc;
             outline: none;

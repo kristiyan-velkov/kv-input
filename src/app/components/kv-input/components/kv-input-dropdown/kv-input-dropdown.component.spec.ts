@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KvAutocompleteComponent } from './kv-autocomplete.component';
+import { KvInputDropdownComponent } from './kv-input-dropdown.component';
 
-describe('KvAutocompleteComponent', () => {
-  let component: KvAutocompleteComponent;
-  let fixture: ComponentFixture<KvAutocompleteComponent>;
+describe('KvInputDropdownComponent', () => {
+  let component: KvInputDropdownComponent;
+  let fixture: ComponentFixture<KvInputDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KvAutocompleteComponent ]
+      declarations: [ KvInputDropdownComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KvAutocompleteComponent);
+    fixture = TestBed.createComponent(KvInputDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,26 +1,27 @@
 :host {
-    .kv-autocomplet_input-clear {
-        position: absolute;
-        top: -30px;
-        right: 5px;
-        background: transparent;
-        border: none;
-        font-size: 16px;
-        color: #9E9E9E;
-        outline: none;
-
-        &:hover {
-            color: #545050;
-            cursor: pointer;
-        }
-    }
-
-    .list-of-values {
+    .kv-input-dropdown {
         position: absolute;
         width: 220px;
+        text-align: left;
         z-index: 9999;
 
-        &_wrapper {
+        &_clear-input-btn {
+            position: absolute;
+            top: -30px;
+            right: 5px;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            color: #9E9E9E;
+            outline: none;
+
+            &:hover {
+                color: #545050;
+                cursor: pointer;
+            }
+        }
+
+        &_list {
             background-color: #f6f6f6;
             background-image: linear-gradient(#f6f6f6, #f1f1f1);
             list-style-type: none;
