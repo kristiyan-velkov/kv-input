@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, Renderer2 } from '@angular/core';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { IkvAutocompleteListItem } from './../../models/kv-autocomplete.interface';
 
@@ -21,10 +21,11 @@ const listAnimation = trigger('listAnimation', [
     styleUrls: ['./list-of-values.component.scss'],
     animations: [listAnimation]
 })
-export class ListOfValuesComponent implements OnInit, AfterViewInit {
+export class ListOfValuesComponent implements OnInit {
     @Input() autoCompleteData: IkvAutocompleteListItem[];
     @Input() showClearButton: boolean;
-    @Output() selectedItem: EventEmitter<IkvAutocompleteListItem> = new EventEmitter();
+    @Input() searchText: string;
+    @Output() selectedItem: EventEmitter<string> = new EventEmitter();
     @Output() clearButton: EventEmitter<boolean> = new EventEmitter();
     @ViewChild('kvAutocompleteList') autocompleteList: ElementRef;
 
@@ -33,9 +34,6 @@ export class ListOfValuesComponent implements OnInit, AfterViewInit {
     constructor(private render: Renderer2) { }
 
     ngOnInit(): void { }
-
-    ngAfterViewInit(): void {
-    }
 
     public previousListItem(): void {
         if (!this.autocompleteList) {
@@ -48,7 +46,7 @@ export class ListOfValuesComponent implements OnInit, AfterViewInit {
             return;
         }
 
-        if (this.activeListElement.previousElementSibling ) {
+        if (this.activeListElement.previousElementSibling) {
             this.render.removeClass(this.activeListElement, 'active');
             this.render.addClass(this.activeListElement.previousElementSibling, 'active');
             this.activeListElement = this.activeListElement.previousElementSibling;
@@ -56,7 +54,6 @@ export class ListOfValuesComponent implements OnInit, AfterViewInit {
             return;
         }
     }
-
     public nextListItem(): void {
         if (!this.autocompleteList) {
             return;
@@ -77,13 +74,16 @@ export class ListOfValuesComponent implements OnInit, AfterViewInit {
         }
     }
 
-    public handleClickOnSelectedListItem(item): void {
-        this.selectedItem.emit(item);
+    public handleClickOnSelectedListItem(listItemValue: string): void {
+        this.selectedItem.emit(listItemValue);
+        this.searchText = '';
     }
 
-    public getSelectedListItem(): string {
-        if (this.activeListElement && this.activeListElement.childNodes[1]) {
-            return this.activeListElement.childNodes[1].innerText;
-        }
+    public setActiveItemValue(listItemValue: string): void {
+        this.selectedItem.emit(listItemValue);
+    }
+
+    public returnSelectedItem(): void {
+        this.selectedItem.emit(this.activeListElement.childNodes[1].innerText);
     }
 }

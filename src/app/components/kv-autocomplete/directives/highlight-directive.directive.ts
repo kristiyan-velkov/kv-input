@@ -1,45 +1,36 @@
-import { Directive, Input, SimpleChanges, Renderer2, ElementRef, OnChanges, Host } from '@angular/core';
-import { KvAutocompleteComponent } from '../kv-autocomplete.component';
+import { Directive, Input, Renderer2, ElementRef, OnChanges, AfterViewInit, Output, EventEmitter } from '@angular/core';
 @Directive({
-  selector: '[appHighlightDirective]'
+    selector: '[appHighlightDirective]'
 })
-export class HighlightDirectiveDirective implements OnChanges {
-  @Input() searchedWord: string;
-  @Input() content: string;
-  @Input() classToApply: string;
-  @Input() setTitle = false;
+export class HighlightDirectiveDirective implements OnChanges, AfterViewInit {
+    @Input() searchedWord: string;
+    @Input() itemClassOnMatch: string = 'matched';
+    @Output() activeItemValue: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private el: ElementRef, private renderer: Renderer2, @Host() private inputComponent: KvAutocompleteComponent) { 
-    console.log(this.inputComponent);
-  }
+    public allElementsItems: any[] = [];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.content) {
-      return;
+    constructor(private el: ElementRef, private renderer: Renderer2) { }
+
+    ngAfterViewInit(): void {
+        this.allElementsItems = this.el.nativeElement.children;
     }
+    ngOnChanges(): void {
 
-    if (this.setTitle) {
-      this.renderer.setProperty(
-        this.el.nativeElement,
-        'title',
-        this.content
-      );
+        if (!this.allElementsItems && this.allElementsItems.length) {
+            return;
+        }
+
+        for (const item of this.allElementsItems) {
+            const elementText: string = item.children[1].innerText;
+            if (this.searchedWord && elementText.startsWith(this.searchedWord)) {
+                this.renderer.addClass(item, `${this.itemClassOnMatch}`);
+            } else {
+                const checkIfHaveActiveClass: boolean = item.classList.contains(`${this.itemClassOnMatch}`);
+
+                if (checkIfHaveActiveClass) {
+                    this.renderer.removeClass(item, `${this.itemClassOnMatch}`);
+                }
+            }
+        }
     }
-
-    if (!this.searchedWord || !this.searchedWord.length || !this.classToApply) {
-      this.renderer.setProperty(this.el.nativeElement, 'innerHTML', this.content);
-      return;
-    }
-
-    this.renderer.setProperty(
-      this.el.nativeElement,
-      'innerHTML',
-      this.getFormattedText()
-    );
-  }
-
-  getFormattedText() {
-    const re = new RegExp(`(${this.searchedWord})`, 'gi');
-    return this.content.replace(re, `<span class="${this.classToApply}">$1</span>`);
-  }
 }

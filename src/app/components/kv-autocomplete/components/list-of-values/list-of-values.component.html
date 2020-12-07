@@ -1,13 +1,11 @@
 <div class="list-of-values">
     <button type="reset" class="kv-autocomplet_input-clear" *ngIf="showClearButton" (click)="clearButton.emit(true)">x</button>
-    <ul #kvAutocompleteList [@listAnimation]="autoCompleteData.length" class="list-of-values_wrapper">
-        <!-- <ng-template ngFor let-item let-first="first" let-i="index" [ngForOf]="autoCompleteData">
-               
-            </ng-template> -->
+    <ul #kvAutocompleteList [@listAnimation]="autoCompleteData.length" class="list-of-values_wrapper"
+        appHighlightDirective [searchedWord]="searchText" (activeItemValue)="setActiveItemValue($event);">
         <li class="list-of-values_wrapper-row" *ngFor="let item of autoCompleteData"
             (click)="handleClickOnSelectedListItem(item.value)">
             <span class="list-of-values_wrapper-row_index">{{item.index}} -</span>
-            <span class="list-of-values_wrapper-row_value">{{item?.value}}</span>
+            <span class="list-of-values_wrapper-row_value title">{{item?.value}}</span>
         </li>
     </ul>
 </div>

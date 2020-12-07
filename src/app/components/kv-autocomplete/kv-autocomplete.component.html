@@ -3,6 +3,7 @@
         type="text"
         class="kv-autocomplete-input"
         placeholder="{{placeholder ? placeholder : 'Type ...'}}"
+        [(ngModel)]="kvInputValue"
         [value]="kvInputValue"
         [disabled]="kvInputDisabledStatus"
         [readonly]="kvInputReadOnlyStatus"
@@ -13,15 +14,12 @@
         (keyup.enter)="handleEnterEvent($event.target.value)"
         (keyup.escape)="closeAutocompleteList($event.target.value)"
     >
-    
     <app-list-of-values
-    #kvDropDownList
-    *ngIf="showAutoCompleteList"
-    [autoCompleteData]="autocompleteData"
-    [showClearButton]="showClearButton"
-    (clearButton)="clearInputValue()"
-    (selectedItem)="updateInputValueAndRegister($event)">
+        #kvDropDownList
+        [autoCompleteData]="autocompleteData"
+        [showClearButton]="showClearButton"
+        (clearButton)="clearInputValue()"
+        [searchText]="kvInputValue"
+        (selectedItem)="updateInputValueAndRegister($event)">
     </app-list-of-values>
-    
 </div>
-<!-- *ngIf="showAutoCompleteList" -->

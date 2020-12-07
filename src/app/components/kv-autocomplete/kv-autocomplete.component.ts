@@ -101,8 +101,7 @@ export class KvAutocompleteComponent implements OnInit, ControlValueAccessor {
 
     public handleEnterEvent(value: string): void {
         if (this.isDropDownOpen) {
-            this.updateInputValueAndRegister(this.dropDownList.getSelectedListItem());
-            this.closeAutocompleteList(this.dropDownList.getSelectedListItem());
+            this.dropDownList.returnSelectedItem();
         } else {
             this.updateInputValueAndRegister('');
             this.updateAutocompleteList(value);
