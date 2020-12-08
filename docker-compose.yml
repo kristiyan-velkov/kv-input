@@ -6,7 +6,7 @@ services:
         image: christiyan-task/07.12.2020
         build:
             context: .
-            dockerfile: Dockerfile-christiyan-progress-task
+            dockerfile: Dockerfile-task
         volumes:
           - ./dist/christiyan-progress-task:/usr/share/nginx/html
         ports:

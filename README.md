@@ -93,6 +93,18 @@ That's it! You will have nice and easy custom input field in your application. C
 ------
 </br>
 
+## Unit Testing 
+
+In project was added unit tests. 
+
+The main objective of unit testing is to ensure that each individual part is working well and as it’s supposed to work. The entire system will only be able to work well if the individual parts are working well.
+
+To run the tests press: 
+
+```text
+    ng test
+```
+
 ## Basic usage: 
 </br>
 
