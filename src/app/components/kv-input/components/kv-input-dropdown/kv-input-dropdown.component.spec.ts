@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HighlightMatchedItemsDirective } from '../../directives/highlight-matched-items.directive';
 
 import { KvInputDropdownComponent } from './kv-input-dropdown.component';
 
@@ -8,7 +9,10 @@ describe('KvInputDropdownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KvInputDropdownComponent ]
+      declarations: [ KvInputDropdownComponent, HighlightMatchedItemsDirective],
+      providers: [
+        { provide: HighlightMatchedItemsDirective, useValue: true },
+      ]
     })
     .compileComponents();
   });
@@ -17,9 +21,5 @@ describe('KvInputDropdownComponent', () => {
     fixture = TestBed.createComponent(KvInputDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

@@ -1,4 +1,4 @@
-import { Directive, Input, Renderer2, ElementRef, OnChanges, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Directive, Input, Renderer2, ElementRef, OnChanges, AfterViewInit} from '@angular/core';
 
 @Directive({
     selector: '[appHighlightMatchedItems]'
