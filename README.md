@@ -1,216 +1,199 @@
-# Data in QC UI
+<div align="center">
+  <img src="./src/assets/images/kvinput-logo.png" alt="KV INPUT">
+</div>
+<h3 align="center">KV INPUT</h3>
+</br>
+<h5></h5>
+<p align="center">KV INPUT is а Angular 10 component that supports form control and lets you choose a single predefined value from a dropdown list or input a custom value.</p>
 
 ## Table of contents
 
--   [Installation of common tools](#installation-of-common-tools)
--   [Setup the project](#setup-the-project)
--   [Development server](#development-server)
--   [Running unit tests](#running-unit-tests)
--   [Running end-to-end tests](#running-end-to-end-tests)
--   [Running the project in Docker](#running-the-project-in-docker)
--   [Build](#build)
--   [Useful Links](#useful-links)
+- [Example](#example)
+- [How to use KV Input](#how-to-use-kv-input)
+- [Purpose and usage](#purpose-and-usage)
+- [Documentation](#documentation)
+- [Creator](#creator)
+- [Further help](#further-help)
+- [Copyright and license](#copyright-and-license)
+
+## Example
+
+
+<img src="./src/assets/images/kv-input-demo.gif" alt="KV INPUT">
+
+## How to use KV Input
+<strong>KV input is extremely easy to use.</strong>
+
+All you have to do is import the "KvInputModule" into the app.module file or another suitable module of your choice in the imports and providers of your module.
+
+Example:
+```text
+  import { KvInputModule } from './components/kv-input kv-input.module';
+
+  @NgModule({
+  declarations: [
+  ],
+  imports: [
+    KvInputModule
+  ],
+  providers: [
+    KvInputModule
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+Next step is to put KV Input in our html
+
+```text
+   <app-kv-input 
+      [maxDropDownSuggestions]='10'
+      [placeholder]="'e.g. football'"
+      [data]="data" 
+      formControlName="kvInput">
+  </app-kv-input>
+```
+
+That's it! You will have nice and easy custom input field in your application. Cheers :)
+## Purpose and usage 
+<strong>KV input is an easy and convenient Angular 10 component that can be easy to use and extremely fast implemented in another Angular project.The component is the solution for upgrades to the default input field.</strong>
+
+<p>Such a component would definitely be appropriate when we need to allow users to choose from the <strong>suggestions data</strong>, who we can pre-define.</p>
+
+<p>Ass well user can easily add new suggestions is need to click only Enter in KV Input and the suggestion will show on previews typing. This will save the user time and will make our applications more convenient to use.</p>
+
+<strong>KV Input can be used with or without form control!</strong>
+
+</br>
+
+# Documentation
+ - Angular - 10.2.0;
+ - TypeScript - 4.0.2;
+ - Jasmine - 3.6.0;
+ - Karma - 5.0.0;
+-----
+
+<strong>List of KV Input - @Inputs</strong>
+
+```text
+    @Input() data: IKvInputDropdownItem[];
+    @Input() placeholder: string;
+    @Input() isDisabled: boolean;
+    @Input() showInputClearButton: boolean;
+    @Input() maxDropDownSuggestions;
+```
+
+<strong>List of KV Input - @Output </strong>
+```text
+  @Output() getInputValue: EventEmitter<any>;
+```
+
+------
+</br>
+
+## Unit Testing 
+
+In project was added unit tests. 
+
+The main objective of unit testing is to ensure that each individual part is working well and as it’s supposed to work. The entire system will only be able to work well if the individual parts are working well.
+
+To run the tests press: 
+
+```text
+    ng test
+```
+
+## Basic usage: 
+</br>
+
+```text
+    @Input() data: IKvInputDropdownItem[];
+
+    Array[{index: number, value: string}]
+   
+```
+
+Allow to add data to KV Input suggestion drop down. If is empty the drop-down will not show.
+
+If the user press Enter and add a new word drop-down suggestion list will show with the selected word.
+
+-----
+
+```text
+    @Input() placeholder: string;
+
+    string;
+```
+Custom placeholder for KV Input. If input is not set the default placeholder will be used { Type ...}
 
 ---
 
-## Installation of common tools
+```text
+    @Input() isDisabled: boolean;
 
-To run this Angular UI project you will need:
+    boolean;
+```
+If is set to true Input will be disabled.
 
--   [GIT](#git)
--   [Node JS](#node-js)
--   [Angular CLI](#angular-cli)
--   [Docker](#docker)
+----
 
-</br>
+```text
+    @Input() showInputClearButton: boolean;
 
-### GIT
+    boolean;
+```
+By default clear button will be shown. If you want to disable it put this input to  true;
 
-Git is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. [More Info](https://www.atlassian.com/git/tutorials/what-is-version-control)
-
-1. If you don't have it installed, install GIT from here - [Install GIT ](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-</br>
-
-### NODE JS
-
-Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. [More Info](https://nodejs.org/docs/latest-v13.x/api/)
-
-1. Check if you have already installed Node JS
-
-    ```code
-        node -v
-    ```
-
-2. Check if you have NPM installed
-
-    ```code
-       npm -v
-    ```
-
-3. If you don't have Node JS in your PC then install the latest stable version (LTS) from here -> [Install](https://nodejs.org/en/download/)
-
-</br>
-
-**Note**: Angular, the Angular CLI, and Angular applications depend on npm packages for many features and functions. To download and install npm packages, you need an npm package manager. The NPM is installed with Node.js by default.
-
-</br>
-</br>
-
-### Angular CLI
-
-The Angular CLI makes it easy to create an application that already works, right out of the box. It already follows our best practices! [More Info](https://angular.io/cli)
-
-1. Check if you have already installed Angular CLI
-
-    ```code
-       ng --version
-    ```
-
-2. If you don't have Angular in your PC then run this command in a terminal window. [More Info](https://angular.io/guide/setup-local)
-
-    ```code
-       npm install -g @angular/cli
-    ```
-
-</br>
-</br>
-
-### Docker
-
-Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels
-[More Info](https://docs.docker.com/)
-
-1. Check if you have already installed Docker
-
-    ```code
-       docker -v
-    ```
-
-2. If you don't have Docker -> [Install from here](https://angular.io/guide/setup-local)
-
-</br>
-</br>
 
 ---
+```text
+    @Input() maxDropDownSuggestions: number;
+
+    number
+```
+
+Allow to controls how many suggestions will show the KV Input drop-down.
+
+By default: 10 suggestions
 
 </br>
-
-## Setup the project
-
-1. Clone GIT repo from TFS using the below command.
-
-    ```code
-    git clone https://tfs.gfk.com/StarTrackDevelopment/Gim%20Global/_git/GimGlobal
-    ```
-
-2. Navigate to the project root ( GimGlobal\diqc\ui)
-
-3. Install npm packages. Run this command in terminal window.
-
-    ```code
-        npm install
-    ```
-4. Run the Angular project to test the packages installation and to be sure everything is correct with setup!
-
-    ```code
-        npm start
-    ```
-
-You can find more help with Angular setup [here](https://angular.io/guide/setup-local)
-
 </br>
 
----
+### Output
 
-## Development server
+```text
+  @Output() getInputValue: EventEmitter<string>;
 
-1. Run `ng serve` for a dev server.
+  string;
+  
+```
 
-    ```code
-        ng serve
-    ```
-2. Navigate to `http://localhost:4200/`.
-3. The app will automatically reload if you change any of the source files.
+If we don't want to use KV Input as a formControl then we can easily use this Output to handle input value.
 
+------
+## Basic accessibility 
+Of course, many more functionalities can be added to this component, such as:
+
+- instead of using a "ul list" to display the items in the drop-down we can use a listbox with its events.
+- new @Inputs can be added to manipulate the input itself and related drop-down
+- to add different ways for dropdown list animation 
+- to add other Keyboard Navigation besides the ones that KV Input now has as - Click, Focus, Blur, Key up, Key bottom, Enter
+- and many others ...
+
+Note: more info about listbox -> 
+[Listbox](https://www.w3.org/TR/wai-aria/#listbox)
+
+## Creator
+Christiyan Velkov
+
+## Further help
+
+Email: christiyan.velkov@gmail.com
+
+## Copyright and license
+
+Christiyan Velkov - ©2020  - All rights reserved
 </br>
-
-Official documentation about [Angular Development server ](https://angular.io/cli/serve)
-
-</br>
-
----
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-    ```code
-        ng serve
-    ``` 
-</br>
-
-Official documentation about [Angular Unit Tests ](https://angular.io/guide/testing)
-
-</br>
-
----
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-    ```code
-        ng e2e
-    ```
-
-Official documentation about [Angular End-to-end Tests ](https://angular.io/cli/e2e)
-
-</br>
-
----
-
-## Running the project in Docker
-
-1.  Navigate to the UI project root
-
-2.  Run `dev-docker` to create the docker image
-    </br>
-
-    ```code
-        npm run dev-docker
-    ```
-
-3.  Navigate to `http://localhost:5200/`.
-
-</br>
-
----
-
-## Build
-
-1. Run `npm build` to build the project.
-
-    ```code
-        npm build
-    ```
-
-2. The build artifacts will be stored in the `dist/` directory.
-
-3. Use the `--prod` flag for a production build.
-
-Official documentation about [Angular Build ](https://angular.io/cli/build)
-
-</br>
-
----
-
-## Useful links
-
--   [Official Angular Documentation](https://angular.io/docs)
-
--   [Official TypeScript Documentation](https://www.typescriptlang.org/docs/)
-
--   [Official Node JS Documentation](https://nodejs.org/en/docs/)
-
--   [Official Docker Documentation](https://docs.docker.com/)
+License: MIT
